@@ -8,5 +8,6 @@ $ yarn
 $ yarn start
 $ react-native run-android
 ```
-## Showcases
-![](https://imgur.com/a/tDRVqol)
+## Showcase
+
+[](https://i.imgur.com/GWVr5cy.gifv)
