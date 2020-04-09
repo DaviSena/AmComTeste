@@ -9,5 +9,4 @@ $ yarn start
 $ react-native run-android
 ```
 ## Showcase
-
-!(image)[https://i.imgur.com/dR2cDGu.gifv]
+[GIF@imgur](https://imgur.com/a/m9bJ7mW)
