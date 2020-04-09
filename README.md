@@ -10,4 +10,4 @@ $ react-native run-android
 ```
 ## Showcase
 
-![](https://i.imgur.com/GWVr5cy.gifv)
+[Imgur](https://i.imgur.com/dR2cDGu.gifv)
