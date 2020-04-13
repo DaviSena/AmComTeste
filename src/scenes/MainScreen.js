@@ -6,70 +6,71 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import {View, Text, Icon, Button, Badge} from 'native-base';
-import {products} from '../services/ProductsList';
+import ProductsService from '../services/productsService';
 import ProductListItem from '../components/ProductListItem';
 import BrandColors from '../utils/BrandColors';
 import UserCart from '../components/UserCart';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
+const PRICE_ASCENDING = 'PRICE_ASCENDING';
+const PRICE_DESCENDING = 'PRICE_DESCENDING';
+const CLEAN = 'CLEAN';
 
 const MainScreen = (props) => {
-  const productsPagination = (pageToShow) => {
-    const productsLength = products.length;
+  props.navigation.setOptions({
+    headerRight: () => (
+      <Button
+        style={{marginRight: 20}}
+        transparent
+        onPress={() => props.navigation.navigate('Cart')}>
+        <Icon name="cart" style={styles.cartHeadreIcon} />
+        {UserCart.cartItens && UserCart.cartItens.length > 0 && (
+          <Badge style={styles.cartItensBadge}>
+            <Text style={{color: BrandColors.brandActionColor}}>
+              {UserCart.cartItens.length}
+            </Text>
+          </Badge>
+        )}
+      </Button>
+    ),
+  });
 
-    if (productsLength <= 10) {
-      return products;
-    } else {
-      const startPoint = (pageToShow - 1) * 10;
-      const stopPoint = pageToShow * 10;
-
-      return products.slice(startPoint, stopPoint);
-    }
-  };
-
+  const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [refreshAfterCart, setRefreshAfterCart] = useState(false);
-  const [filterProducts, setFilterProducts] = useState(
-    productsPagination(page),
-  );
+  const [filterProducts, setFilterProducts] = useState([]);
   const [showReorderModal, setShowReorderModal] = useState(false);
   const [reorderAcending, setReorderAcending] = useState(false);
   const [reorderDescending, setReorderDescending] = useState(false);
-  const PRICE_ASCENDING = 'PRICE_ASCENDING';
-  const PRICE_DESCENDING = 'PRICE_DESCENDING';
-  const CLEAN = 'CLEAN';
   const productsToSort = [...products];
 
   React.useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', () => {
       setRefreshAfterCart(!refreshAfterCart);
     });
-
     return unsubscribe;
   });
 
   React.useLayoutEffect(() => {
-    props.navigation.setOptions({
-      headerRight: () => (
-        <Button
-          style={{marginRight: 20}}
-          transparent
-          onPress={() => props.navigation.navigate('Cart')}>
-          <Icon name="cart" style={styles.cartHeadreIcon} />
-          {UserCart.cartItens && UserCart.cartItens.length > 0 && (
-            <Badge style={styles.cartItensBadge}>
-              <Text style={{color: BrandColors.brandActionColor}}>
-                {UserCart.cartItens.length}
-              </Text>
-            </Badge>
-          )}
-        </Button>
-      ),
+    ProductsService.getProducts().then((result) => {
+      setProducts(result);
+      const productsPagination = (allProducts, pageToShow) => {
+        const productsLength = allProducts.length;
+
+        if (productsLength <= 10) {
+          return allProducts;
+        } else {
+          const startPoint = (pageToShow - 1) * 10;
+          const stopPoint = pageToShow * 10;
+
+          return allProducts.slice(startPoint, stopPoint);
+        }
+      };
+      setFilterProducts(productsPagination(result, page));
     });
-  });
+  }, [page]);
 
   const addItemToCart = (item) => {
     UserCart.addProduct(item);
@@ -138,7 +139,6 @@ const MainScreen = (props) => {
 
   const changePage = (page) => {
     setPage(page);
-    setFilterProducts(productsPagination(page));
   };
 
   const renderPagination = () => {
