@@ -12,6 +12,5 @@ $ react-native run-android
 [GIF@imgur](https://imgur.com/a/m9bJ7mW)
 
 ![](https://github.com/DaviSena/AmComTeste/raw/master/screenshoots/screenshoot01.png)
-![](https://github.com/DaviSena/AmComTeste/raw/master/screenshoots/screenshoot02.png)
 ![](https://github.com/DaviSena/AmComTeste/raw/master/screenshoots/screenshoot03.png)
 ![](https://github.com/DaviSena/AmComTeste/raw/master/screenshoots/screenshoot04.png)
