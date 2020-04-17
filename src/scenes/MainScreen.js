@@ -245,7 +245,7 @@ const MainScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ecedef',
+    backgroundColor: BrandColors.grayBackground,
     paddingTop: 10,
     paddingBottom: 50,
     height: screenHeight - 50,

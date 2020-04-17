@@ -1,0 +1,7 @@
+{
+    "preset": "react-native",
+    "testRegex": "((\\.|/*.)(test))\\.js?$",
+    "transformIgnorePatterns": [
+        "node_modules/(?!(react-[a-z, -]*|react-native|native-base-[a-z, -]*|react-native-[a-z, -]*)/)"
+    ]
+}

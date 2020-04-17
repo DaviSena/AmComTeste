@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, Text, Icon} from 'native-base';
 import {StyleSheet} from 'react-native';
+import BrandColors from '../utils/BrandColors';
 
-const StarRating = ({rating}) => {
+const StarRating = ({rating = 0}) => {
   let stars = [];
 
   for (let rate = 1; rate <= 5; rate++) {
@@ -14,7 +15,7 @@ const StarRating = ({rating}) => {
   }
 
   return (
-    <View style={{flexDirection: 'row', paddingBottom: 10}}>
+    <View style={styles.container}>
       {stars}
       <Text style={styles.rateText}>{rating}</Text>
     </View>
@@ -22,15 +23,16 @@ const StarRating = ({rating}) => {
 };
 
 const styles = StyleSheet.create({
+  container: {flexDirection: 'row', paddingBottom: 10},
   rateText: {
     fontSize: 12,
     marginLeft: 5,
   },
   fullStar: {
     fontSize: 15,
-    color: '#ecc953',
+    color: BrandColors.starRateYellow,
   },
-  emptyStar: {fontSize: 15, color: '#cccccc'},
+  emptyStar: {fontSize: 15, color: BrandColors.starRateGray},
 });
 
 export default StarRating;

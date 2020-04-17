@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   productInfoContainer: {
     flex: 1,
     backgroundColor: 'white',
-    borderTopColor: '#cccccc',
+    borderTopColor: BrandColors.borderGray,
     borderTopWidth: 1,
   },
   productInfo: {
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
   },
   commentsArea: {
     flex: 1,
-    borderTopColor: '#cccccc',
+    borderTopColor: BrandColors.borderGray,
     borderTopWidth: 1,
     paddingLeft: 20,
     paddingRight: 10,
