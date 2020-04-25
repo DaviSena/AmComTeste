@@ -1,4 +1,4 @@
-# App React Native para AmCom
+# App React Native para E-commerce
 
 Exemplo de Aplicativo para E-Commerce.
 
