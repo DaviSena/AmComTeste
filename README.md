@@ -1,6 +1,6 @@
-# AmComTeste
+# App React Native para AmCom
 
-Exemplo de Aplicativo para E-Commerce criado como resposta à solicitação de teste técnico da empresa AmCom.
+Exemplo de Aplicativo para E-Commerce.
 
 ## Execução
 ```bash
