@@ -1,7 +1,7 @@
 import React from 'react';
 import {create} from 'react-test-renderer';
-import StarRating from 'components/StarRating';
-import BrandColors from 'utils/BrandColors';
+import StarRating from '../../src/components/StarRating';
+import BrandColors from '../../src/utils/BrandColors';
 
 test('Component is rendering correctly for rating = 3', () => {
   const component = create(<StarRating rating={3} />); //Create the StarRating component

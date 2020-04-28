@@ -14,7 +14,11 @@ class UserCart {
   }
 
   static addProduct(product) {
-    if (cartItens && !cartItens.some((item) => item.name === product.name)) {
+    if (
+      product &&
+      cartItens &&
+      !cartItens.some((item) => item.name === product.name)
+    ) {
       cartItens.push(product);
       UserCart.storeData(cartItens);
       return true;
@@ -23,8 +27,10 @@ class UserCart {
   }
 
   static removeProduct(product) {
-    cartItens = cartItens.filter((item) => item.name !== product.name);
-    UserCart.storeData(cartItens);
+    if (product) {
+      cartItens = cartItens.filter((item) => item.name !== product.name);
+      UserCart.storeData(cartItens);
+    }
   }
 
   static clearUserCart() {

@@ -14,6 +14,10 @@ const ProductListItem = ({
   addItemToCart,
   removeItemToCart,
 }) => {
+  if (!product) {
+    return null;
+  }
+
   const hasDiscount = product.discount || product.discount.length !== 0;
   const productIsInCart = UserCart.isProductInCart(product.name);
 
